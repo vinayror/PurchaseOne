@@ -1,0 +1,13 @@
+<%# add navigation links to this file %>
+<% if user_signed_in? %>
+  <% if current_user.is_admin? %>
+    <li><%= link_to 'Admin', admin_root_path %></li>
+    <li><%= link_to 'Users list', users_path %></li>
+  <% end %>
+  <li><%= link_to 'My purchases', purchases_path%></li>
+  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+  <li><%= link_to 'Sign out', destroy_user_session_path%></li>
+<% else %>
+  <li><%= link_to 'Sign in', new_user_session_path %></li>
+  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+<% end %>

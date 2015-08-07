@@ -1,0 +1,17 @@
+<p>
+  <h3><strong>Date:</strong></h3>
+  <h3><%= @purchase.date.strftime('%e %b %Y') if @purchase.date.present? %></h3>
+</p>
+
+<p>
+  <h3><strong>Title:</strong></h3>
+  <h3><%= @purchase.title %></h3>
+</p>
+
+<p>
+  <h3><strong>Amounts</strong></h3>
+  <h3><%= @purchase.amounts.map(&:price).join(', ')  if @purchase.amounts.map(&:price).present?%></h3>
+</p>
+
+<%= link_to 'Edit', edit_purchase_path(@purchase), class: 'btn btn-info'%> |
+<%= link_to 'Back', purchases_path , class: 'btn btn-warning'%>

@@ -1,0 +1,36 @@
+<% if @purchases.present? %>
+    <div class="table-responsive">          
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Amounts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @purchases.each do |purchase| %>
+          <tr>
+            <td><%= purchase.date %></td>
+              <td><%= purchase.title %></td>
+              <td><%= purchase.amounts.map(&:price).join(',') if !purchase.amounts.nil? %></td>
+              <td><%= link_to 'Show', purchase, class: 'btn btn-info btn-sm' %></td>
+              <td><%= link_to 'Edit', edit_purchase_path(purchase), class: 'btn btn-warning btn-sm' %></td>
+              <td><%= link_to 'Destroy', purchase, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+<% else %>
+  <h3> you don't have any purchase records</h3>
+<% end %>
+<br>
+<%= link_to 'New Purchase', new_purchase_path , class: 'btn btn-info'%>
+
+
+<style type="text/css">
+  table, th, td {
+   border: 1px;
+} 
+</style>
