@@ -16,4 +16,4 @@
 //= require turbolinks
 //= require bootstrap.js
 //= require cocoon
-//= require_tree .
+//= require_directory .
