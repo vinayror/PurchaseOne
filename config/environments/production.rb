@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.assets.precompile += ['active_admin.js', 'active_admin.css', 'active_admin/print.css']
+  config.assets.precompile += %w[active_admin.css active_admin.js]
   config.serve_static_assets = true
   # Code is not reloaded between requests.
   config.cache_classes = true
