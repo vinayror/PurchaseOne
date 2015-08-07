@@ -1,7 +1,7 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
   <% if current_user.is_admin? %>
-    <li><%= link_to 'Admin', admin_root_path %></li>
+    <li><%= link_to 'Go to Admin Penal', admin_root_path, method: :get, class: "btn-sm test" %></li>
     <li><%= link_to 'Users list', users_path %></li>
   <% end %>
   <li><%= link_to 'My purchases', purchases_path%></li>
@@ -11,3 +11,9 @@
   <li><%= link_to 'Sign in', new_user_session_path %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
 <% end %>
+<style type="text/css">
+  .btn-sm.test {
+    background-color: teal;
+    margin-bottom: 5px;
+    margin-top: 5px;
+</style>
