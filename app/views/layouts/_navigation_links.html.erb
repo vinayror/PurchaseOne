@@ -1,19 +1,26 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
+<ul class="nav navbar-nav">
   <% if current_user.is_admin? %>
-    <li><%= link_to 'Go to Admin Penal', admin_root_path, method: :get, class: "btn-sm admin-link" %></li>
+    <li><%= link_to 'Go to Admin Penal', admin_root_path, method: :get, class: "" %></li>
     <li><%= link_to 'Users list', users_path %></li>
   <% end %>
   <li><%= link_to 'My purchases', purchases_path%></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path%></li>
+
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
+</ul>
 <% end %>
+
 <style type="text/css">
   .btn-sm.admin-link {
-    background-color: teal;
+    background-color: seagreen;
     margin-bottom: 5px;
     margin-top: 5px;
+  }
 </style>
