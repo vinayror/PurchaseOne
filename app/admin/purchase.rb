@@ -1,10 +1,14 @@
 ActiveAdmin.register Purchase do
-
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :date, :title, :user_id, amounts_attributes: [:id, :price, :purchase_id,:_destroy]
+  permit_params :id, :date, :title, :user_id, amounts_attributes: [:id, :price, :purchase_id,:_destroy]
+
+  controller do
+    def find_resource
+      scoped_collection.where(slug: params[:id]).first!
+    end
+  end
 
   index do
     column :id

@@ -17,7 +17,29 @@ ActiveAdmin.setup do |config|
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
   # config.site_title_image = "logo.png"
-
+  module ActiveAdmin
+    module Views
+      class TableFor
+        def bool_column(attribute)
+          column(attribute) { |model| model[attribute] ? '✔'.html_safe : '✗'.html_safe }
+        end
+   
+        def seller_column(attribute)
+          column(attribute) { |model| model[attribute] ? 'Yes' : 'No' }
+        end
+      end
+   
+      class AttributesTable
+        def seller_row(attribute)
+          row(attribute) { |model| model[attribute] ? '✔'.html_safe : '✗'.html_safe }
+        end
+   
+        def bool_row(attribute)
+          row(attribute) { |model| model[attribute] ? 'Yes' : 'No' }
+        end
+      end
+    end
+  end
   # == Default Namespace
   #
   # Set the default namespace each administration resource
@@ -195,11 +217,11 @@ ActiveAdmin.setup do |config|
   #
   # If you wanted to add a static menu item to the default menu provided:
   #
-  #   config.namespace :admin do |admin|
-  #     admin.build_menu :default do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
-  #     end
-  #   end
+    config.namespace :admin do |admin|
+      admin.build_menu :default do |menu|
+        menu.add label: "Go to website", url: proc{ root_path }
+      end
+    end
 
   # == Download Links
   #
